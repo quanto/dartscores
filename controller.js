@@ -13,7 +13,7 @@ app.controller('HomeController', function($scope, $timeout, localStorageService)
 		
 		function(data) {
 			alert(data)
-			$scope.data = JSON.parse(decodeURI(JSON.stringify(data.query)));
+			$scope.data = JSON.parse(data.query.results.html.body.p);
 			$scope.team = localStorageService.get('team')||data.team[0];
 			$scope.$apply();
 		}
