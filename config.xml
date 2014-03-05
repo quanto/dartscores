@@ -23,5 +23,7 @@
     <preference name="exit-on-suspend" value="true" />
 
     <gap:platform name="android" />
+    
+    <access origin="http://*.yahooapis.com" />
 
 </widget>
