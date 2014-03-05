@@ -1,0 +1,143 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+        <meta name="author" content="Kevin Verhoef">
+        <meta name="robots" content="follow, index" />
+
+        <title>ADO</title>
+
+        <!-- Bootstrap core CSS -->
+        <link href="bootstrap.min.css" rel="stylesheet">
+
+        <!-- Custom styles for this template -->
+        <link href="custom.css" rel="stylesheet">
+
+        <script src="jquery.min.js "></script>
+        <script src="angular.min.js"></script>
+
+        <script src="bootstrap.min.js"></script>
+
+		<script src="angular-local-storage.js"></script>
+        <script src="underscore-min.js"></script>
+        <script src="controller.js"></script>
+
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="html5shiv.js"></script>
+            <script src="respond.min.js"></script>
+        <![endif]-->
+        <style>
+
+            body {
+                padding:10px 10px 10px 10px!important;
+                background-color:black;
+            }
+
+            .noPadding {
+                padding:0!important;
+            }
+
+            table {
+                margin-bottom: 0px!important;
+            }
+
+            tbody:not(:first-child) {
+                border-top:0!important;
+            }
+           
+        </style>
+    </head>
+
+    <body ng-app="app">
+        <div ng-controller="HomeController">
+            <p/>
+            <div class="row">
+
+                <div class="col-xs-12">
+
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Selectie</h3>
+                        </div>
+                        <div class="panel-body">
+                            <div class="form-group">
+                                <select class="form-control" ng-model="team" id="team" name="team" ng-options="obj as obj['@attributes'].name.split(',')[0] for obj in data.team track by obj['@attributes'].name"></select>
+                            </div>
+
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+
+                <div class="col-xs-12">
+
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                        <h3 class="panel-title">Ranglijst</h3>
+                        </div>
+                        <div class="panel-body noPadding">
+
+                            <table class="table table-striped table-condensed table-responsive">
+                                <tr>
+                                    <th>Positie</th>
+                                    <th>Naam</th>
+                                    <th>Punten</th>
+                                    <th>Wedstrijden</th>
+                                </tr>
+                                <tr ng-repeat="team in week.ranglijst.team">
+                                    <td>{{$index+1}}</td>
+                                    <td>{{team.naam}}</td>
+                                    <td>{{team.punten}}</td>
+                                    <td>{{team.wedstrijden}}</td>
+                                </tr>
+                                
+                            </table>
+
+                        </div>
+                    </div>
+
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                        <h3 class="panel-title">Uitslagen</h3>
+                        </div>
+                        <div class="panel-body noPadding">
+
+                            <table class="table table-striped table-condensed table-responsive">
+                                <tr ng-init="limit = 2">
+                                    <th>Datum</th>
+                                    <th>Thuis</th>
+                                    <th>Uit</th>
+                                    <th>Uitslag</th>
+                                    <th>Legs</th>
+                                </tr>
+                                <tbody ng-repeat="week in team.week | reverse | limitTo:limit ">
+                                  <tr ng-repeat="uitslag in week.uitslagen.uitslag | reverse">
+                                    <td>{{uitslag.datum}}</td>
+                                    <td>{{uitslag.thuisteam}}</td>
+                                    <td>{{uitslag.uitteam}}</td>
+                                    <td>{{uitslag.uitslag}}</td>
+                                    <td>{{uitslag.legs}}</td>
+                                    <!--<td>{{uitslag.commentaar}}</td>-->
+                                  </tr>
+                                </tbody>
+                                <tbody ng-class="{hidden: limit == 999 || team.week.length <= 2 }"><tr><td colspan="5"><button class="btn btn-default" ng-click="limit = 999" style="width:100%!important;">Toon oudere uitslagen</button></td></tr></tbody>
+                            </table>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <span ng-init="init()"></span>
+        </div>
+    </body>
+</html>
+				
