@@ -25,5 +25,5 @@
     <gap:platform name="android" />
     
     <access origin="http://*.yahooapis.com" />
-
+    <access origin="http://query.yahooapis.com" />
 </widget>
