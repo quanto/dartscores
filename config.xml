@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<widget xmlns = "http://www.w3.org/ns/widgets"
+        xmlns:gap = "http://phonegap.com/ns/1.0"
+        id        = "nl.kevinverhoef.dartscores"
+        version   = "1.0">
+
+
+    <name>Arnhem dart scores</name>
+
+    <description>
+        Arnhem dart scores
+    </description>
+
+    <author href="http://kevinverhoef.nl" email="verhoef.k@gmail.com">
+        Kevin Verhoef
+    </author>
+
+
+    <preference name="phonegap-version" value="3.1.0" />
+
+    <preference name="fullscreen" value="true" />
+    <preference name="detect-data-types" value="false" />
+    <preference name="exit-on-suspend" value="true" />
+
+    <gap:platform name="android" />
+
+</widget>
