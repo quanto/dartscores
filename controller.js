@@ -11,6 +11,7 @@ app.controller('HomeController', function($scope, $timeout, localStorageService)
 	$.getJSON("http://query.yahooapis.com/v1/public/yql?format=json&diagnostics=true&q=" + q,
 		
 		function(data) {
+			alert(data)
 			$scope.data = JSON.parse(decodeURI(JSON.stringify(data.query)));
 			$scope.team = localStorageService.get('team')||data.team[0];
 			$scope.$apply();
