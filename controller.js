@@ -6,7 +6,8 @@ app.controller('HomeController', function($scope, $timeout, localStorageService)
     $scope.data;
 
     $scope.init = function(){
-	alert("test")
+	
+	try {
 	var q= "select%20*%20from%20html%20where%20url%3D%22ado.kevinverhoef.nl%2Fjson.php%22%20and%20xpath%3D%27%2Fhtml%27";
 	$.getJSON("http://query.yahooapis.com/v1/public/yql?format=json&diagnostics=true&q=" + q,
 		
@@ -17,6 +18,10 @@ app.controller('HomeController', function($scope, $timeout, localStorageService)
 			$scope.$apply();
 		}
 	);
+	}
+	catch (e){
+		alert(e);
+	}
     }
 
     $scope.$watch('team', function(newValue, oldValue, scope) {
