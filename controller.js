@@ -18,7 +18,13 @@ app.controller('HomeController', function($scope, $timeout, localStorageService)
 					
 				// }
 				$timeout(function(){
-					$scope.team = $scope.data[0];
+					$.each($scope.data, function( index, value ) {
+						alert(value)
+						$scope.team = value;
+						$scope.$apply();
+						break;
+					});
+					
 					
 					
 				}, 100);
