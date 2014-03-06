@@ -17,9 +17,10 @@ app.controller('HomeController', function($scope, $timeout, localStorageService)
 				// if (localStorageService.get('team1') != undefinded){
 					
 				// }
-				
-				$scope.team = data.team[0];
-				$scope.$apply();
+				$timeout(function(){
+					$scope.team = data.team[0];
+					$scope.$apply();
+				}, 200);
 			}
 		);
 	}
