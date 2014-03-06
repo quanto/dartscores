@@ -20,7 +20,7 @@ app.controller('HomeController', function($scope, $timeout, localStorageService)
 			
 				$timeout(function(){
 					try {
-					$scope.team = value;
+					$scope.team = $scope.data[0];
 					$scope.$apply();
 					}
 					catch (e){alert(e)}
