@@ -8,15 +8,15 @@ app.controller('HomeController', function($scope, $timeout, localStorageService)
     $scope.init = function(){
 	
 	try {
-	var q= "select%20*%20from%20html%20where%20url%3D%22ado.kevinverhoef.nl%2Fjson.php%22%20and%20xpath%3D%27%2Fhtml%27";
-	$.getJSON("http://query.yahooapis.com/v1/public/yql?format=json&diagnostics=true&q=" + q,
-		
-		function(data) {
-			$scope.data = JSON.parse(data.query.results.html.body.p);
-			$scope.team = localStorageService.get('team')||data.team[0];
-			$scope.$apply();
-		}
-	);
+		var q= "select%20*%20from%20html%20where%20url%3D%22ado.kevinverhoef.nl%2Fjson.php%22%20and%20xpath%3D%27%2Fhtml%27";
+		$.getJSON("http://query.yahooapis.com/v1/public/yql?format=json&diagnostics=true&q=" + q,
+			
+			function(data) {
+				$scope.data = JSON.parse(data.query.results.html.body.p);
+				$scope.team = localStorageService.get('team1')||data.team[0];
+				$scope.$apply();
+			}
+		);
 	}
 	catch (e){
 		alert(e);
@@ -27,7 +27,7 @@ app.controller('HomeController', function($scope, $timeout, localStorageService)
         if (newValue != undefined){
             $scope.week = newValue.week[newValue.week.length-1];
             $scope.limit = 2;
-            localStorageService.add('team',JSON.stringify($scope.team));
+            localStorageService.add('team1',JSON.stringify($scope.team));
         }
     }, false);
 
