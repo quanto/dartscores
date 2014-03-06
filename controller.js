@@ -12,9 +12,13 @@ app.controller('HomeController', function($scope, $timeout, localStorageService)
 		$.getJSON("http://query.yahooapis.com/v1/public/yql?format=json&diagnostics=true&q=" + q,
 			
 			function(data) {
-				alert('done')
 				$scope.data = JSON.parse(data.query.results.html.body.p);
-				$scope.team = localStorageService.get('team1')||data.team[0];
+				
+				// if (localStorageService.get('team1') != undefinded){
+					
+				// }
+				
+				$scope.team = data.team[0];
 				$scope.$apply();
 			}
 		);
