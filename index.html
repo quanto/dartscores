@@ -115,9 +115,9 @@
                                   <tr ng-repeat="uitslag in week.uitslagen.uitslag | reverse">
                                     <td>{{uitslag.datum}}</td>
                                     <td>{{uitslag.thuisteam}}</td>
-                                    <td>{{uitslag.uitteam}}</td>
-                                    <td>{{uitslag.uitslag}}</td>
-                                    <td>{{uitslag.legs}}</td>
+                                    <td>{{uitslag.uitteam | rmwhitespace}}</td>
+                                    <td>{{uitslag.uitslag | rmwhitespace}}</td>
+                                    <td>{{uitslag.legs | rmwhitespace}}</td>
                                     <!--<td>{{uitslag.commentaar}}</td>-->
                                   </tr>
                                 </tbody>
