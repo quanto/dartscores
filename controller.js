@@ -41,3 +41,8 @@ app.filter('reverse', function() {
   };
 });
 	
+app.filter('rmwhitespace', function() {
+  return function(obj) {
+	return obj.replace(/ /g,'');
+  };
+});
