@@ -2,7 +2,7 @@ var app = angular.module('app', ['LocalStorageModule']).run(function($rootScope,
 
 });
 
-app.controller('HomeController', function($scope, $timeout, localStorageService) {
+app.controller('HomeController', function($scope, $timeout) {
     $scope.data;
 
     $scope.init = function(){
@@ -13,18 +13,10 @@ app.controller('HomeController', function($scope, $timeout, localStorageService)
 			
 			function(data) {
 				$scope.data = JSON.parse(data.query.results.html.body.p);
-				
-				// if (localStorageService.get('team1') != undefinded){
-					
-				// }
-			
-				$timeout(function(){
-					try {
-					$scope.team = $scope.data[0];
-					$scope.$apply();
-					}
-					catch (e){alert(e)}
-				}, 200);
+				//alert(JSON.stringify($scope.data.team));
+				//console.log($scope.json);
+				$scope.team = $scope.data.team[0];
+				$scope.$apply();
 			}
 		);
 	}
@@ -37,7 +29,6 @@ app.controller('HomeController', function($scope, $timeout, localStorageService)
         if (newValue != undefined){
             $scope.week = newValue.week[newValue.week.length-1];
             $scope.limit = 2;
-            localStorageService.add('team1',JSON.stringify($scope.team));
         }
     }, false);
 
